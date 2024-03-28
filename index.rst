@@ -13,7 +13,6 @@
    :caption: Contents
 
    docs/bracha_toueg/bracha_toueg
-   docs/rubric
    docs/bracha_toueg/code
 
 .. ATTENTION::
@@ -21,9 +20,4 @@
 
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

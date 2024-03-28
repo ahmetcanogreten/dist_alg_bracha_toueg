@@ -1,2 +1,2 @@
-.. |Bracha-Toueg| replace:: Distributed Algorithm Name 
+.. |Bracha-Toueg| replace:: Bracha-Toueg Crash Consensus Algorithm 
 
