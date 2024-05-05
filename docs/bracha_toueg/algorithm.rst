@@ -115,6 +115,6 @@ probability one.
 Complexity 
 ~~~~~~~~~~
 
-TODO: Present theoretic complexity results in terms of number of messages and computational complexity.
+The complexity of the Bracha-Toueg k-crash consensus algorithm primarily hinges on message and computational overhead in asynchronous systems. Each round of the algorithm involves every non-faulty process broadcasting its current state (value and weight) to all other processes. Thus, in the absence of process failures, the number of messages transmitted in each round is O(n²), where n is the number of processes. If up to k processes may fail, the algorithm still requires messages from at least N-k processes to proceed, maintaining the O(n²) complexity per round. Computational complexity includes evaluating received messages to update weights and potentially decide on a value if conditions are met, which is O(n) per process per round.
 
 .. [Fokking2013] Wan Fokkink, Distributed Algorithms An Intuitive Approach, The MIT Press Cambridge, Massachusetts London, England, 2013
