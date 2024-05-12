@@ -19,6 +19,7 @@
 
 
 
+
 \usepackage{algorithm2e,algorithmicx,algpseudocode}
 \algnewcommand\Input{\item[\textbf{Input:}]}%
 \algnewcommand\Output{\item[\textbf{Output:}]}%
@@ -34,8 +35,8 @@
 \def\true{\textbf{T}}
 \def\false{\textbf{F}}
 
-
-\author[John Doe]{John Doe\\\href{mailto:john@example.com}{john@example.com}}
+\nocite{*}
+\author[Ahmet Can Ogreten]{Ahmet Can Ogreten\\\href{mailto:ahmet.ogreten@metu.edu.tr}{ahmet.ogreten@metu.edu.tr}}
 %\author[J.\,Doe \& J.\,Doe]
 %{%
 %  \texorpdfstring{
@@ -53,8 +54,8 @@
 %  {John Doe \& Jane Doe}
 %}
 
-\title[WINS Beamer Template]{WINS Lab Beamer Presentation Template}
-\subtitle[Short SubTitle]{How to Prepare a Nice Presentation}
+\title[WINS Beamer Template]{Bracha-Toueg \& Chandra-Toueg Consensus Algorithms}
+% \subtitle[Short SubTitle]{How to Prepare a Nice Presentation}
 %\date{} 
 
 \begin{document}
@@ -91,188 +92,264 @@
 %        \partpage
 %\end{frame}
 %
-\section{The Problem}
+\section{Why We Need It ?}
 %\begin{frame}
 %        \sectionpage
 %\end{frame}
 
-\begin{frame}{The problem}
-\framesubtitle{Tell a \alert{STORY} from the background to the conclusion}
-\begin{block}{The Problem Name} 
-Explain the problem here. Instead of using the term `The problem'', please use specific name for the problem. Tell us a story. Provide a picture for the scenario depicting the problem. Set the scene for average audience.
+\begin{frame}{Why We Need It ?}
+Software needs to be resilient and fault-tolerant to ensure high availability. A typical setup includes at least three nodes to maintain service continuity.
+% \framesubtitle{Tell a \alert{STORY} from the background to the conclusion}
+\begin{block}{Consensus}
+Multiple software entities must consistently communicate. When conflicts arise or an entity fails to respond, the remaining nodes must reach a decision using a consensus algorithm. This ensures system reliability despite failures or discrepancies.
 \end{block}
-Spend at least \textbf{1.5-2 minutes per slide} on average.
-
-The introduction should be something like ``I will be presenting title of talk. This is joint work with your colleagues or advisor at institution.'' 
+Different situations demand specialized consensus algorithms to effectively manage communication and decision-making challenges in software systems.
 \note{}
 \end{frame}
 
-\section{The Contribution}
-\begin{frame}
-\frametitle{What is the solution/contribution}
-\framesubtitle{}
-Explain \textbf{YOUR} contributions. Go top-down. Give the brief introduction to the contributions at the beginning of the presentation. A slide should have no more than five to six lines of text or bullets. Prefer figures instead of text: A picture is worth a thousand words.
-\begin{itemize}
-\item Communicate the Key Ideas
-\item Don’t get Bogged Down in Details
-\item Use a Top-down Approach
-\end{itemize}
-
-The audience will remember at most one single message \textbf{Which message you want to audience to remember? Can you express this message in less than a minute in an elevator?}
-
-\end{frame}
-
-
-\section{Motivation/Importance}
-\begin{frame}
-\frametitle{Motivation/Importance}
-\framesubtitle{``Gain upon solving the problem, pain if not solved'' should be explained}
-Explain why the problem is so important. Throw in a little philosophy if necessary. How does the problem fit into the larger picture? If it involves a model of a real-world phenomenon, then how good is the model? What are its applications? What makes the problem nontrivial? You can return to these issues in the Conclusion, when you can re-address them with the benefit of hindsight.
-\end{frame}
-
-\section{Background/Model/Definitions/Previous Works}
-
-
-\subsection{Model, Definitions}
-
-\frame{
-\frametitle{Model, Definitions}
-\framesubtitle{Formal definition of a Stochastic Process}
-The use of terminology and jargon should be kept to a minimum, but is impossible to avoid entirely. All terms must be introduced early. It is also useful to remind the audience of the definitions at critical points later in the talk.
-
-Background and this slide can be combined....
-}
-
-\subsection{Background, Previous Works}
-\begin{frame}{Background}
-Research is not usually carried out in a vacuum. There will almost always be other relevant or related work, which you should describe. Present an orderly synopsis of these previously- obtained results. A table is often used for this purpose. Be sure to mention the author of each paper and its date of publication. \textbf{Compare and contrast them with each other and with your paper.}
-\end{frame}
-
-
-
-
-\section{Contribution}
-\subsection{Main Point 1}
-\begin{frame}{Main Point 1: A Figure}
-\framesubtitle{Abstract the Major Results}
-Describe the key results of the paper. You may present the statements of the major theorems, but not their proofs. You will probably have to get a little technical here, but do so gradually and carefully.
-
+\section{Bracha Toueg}
+\begin{frame}{Bracha Toueg}
+% \framesubtitle{}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{figures/Chick1.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image}
+    \includegraphics[scale=0.4]{bracha-toueg.png}
+    \caption{Bracha Toueg Algorithm Sudo Code}
+    \label{fig:bracha_toueg_sudo}
 \end{figure}
-\note{
-}
-\end{frame}
 
+% Explain \textbf{YOUR} contributions. Go top-down. Give the brief introduction to the contributions at the beginning of the presentation. A slide should have no more than five to six lines of text or bullets. Prefer figures instead of text: A picture is worth a thousand words.
+% \begin{itemize}
+% \item Communicate the Key Ideas
+% \item Don’t get Bogged Down in Details
+% \item Use a Top-down Approach
+% \end{itemize}
 
-\subsection{Main Point 2}
-
-\begin{frame}
-\frametitle{An Example Distributed Algorithm}
-\framesubtitle{Blind Flooding}
-
-
-Blind flooding on an undirected graph is presented in Algorithm~\ref{alg:blindflooding}.
-
-\begin{center}
-\begin{algorithm}[H]
-	\scriptsize
-	\def\algorithmlabel{BlindFlooding}
-    \caption{\algorithmlabel\ algorithm}
-    \label{alg:blindflooding}
-    \begin{algorithmic}[1]
-    	\Implement {\algorithmlabel}{cf} 
-    	\Use {LinkLayerBroadcast} {lbc} 
-    	\Events{Init, MessageFromTop, MessageFromBottom}
-	\Need {}
-
-        \Event {Init}{}
-        		
-        \Event{MessageFromBottom} { $m$ }
-        		\Trig{lbc}{Broadcast} { $m$  }
-        		
-        \Event{MessageFromTop} { $m$ }	
-        		\Trig{lbc}{Broadcast} { $m$  }
-    \end{algorithmic}
-\end{algorithm}
-\end{center}
-
+% The audience will remember at most one single message \textbf{Which message you want to audience to remember? Can you express this message in less than a minute in an elevator?}
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Main Point 2}
-\framesubtitle{Explain the Significance of the Results}
-Pause, and explain the relationships between the formal theorems that you have just presented and the informal description that you gave in the Introduction. Make it clear to the audience that the results do live up to the advance publicity. If the statements of the theorems are very technical then this may take some time. It is time well-spent.
+\subsection{An Example}
+\begin{frame}{Bracha Toueg}
+\framesubtitle{An example}
+Given a network of three processes p, q, r, and k = 1.
+
+\begin{itemize}
+\item Initially, p and q randomly choose the value 0 and r the value 1, all three with weight 1.
+\item In round 0, p takes into account the messages from p and r; it sets its value to 1, and its weight to 1. Moreover, q and r both take into account the messages from p and q; they set their value to 0, and their weight to 2
+\item  In round 1, q takes into account the messages from q and r; since both messages carry weight 2, it decides for 0.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Bracha Toueg}
+\framesubtitle{An example (contd.)}
+\begin{itemize}
+\item Moreover, p and r both take into account the messages from p and r; since the message from r carries weight 2, they set their value to 0, and their weight to 1.
+\item At the start of round 2, q crashes. So p and r can take into account only the messages from p and r; as a result, they set their value to 0, and their weight to 2.
+\item In round 3, p and r can again only take into account the messages from p and r; since both messages carry weight 2, they decide for 0.
+\item p and r send messages with value 0 and weight 2 for two more rounds, and terminate.
+\end{itemize}
 
 \end{frame}
 
-\subsection{Main Point 3}
-\begin{frame}
-\frametitle{Main Point 3}
-\framesubtitle{Sketch a Proof of the Crucial Results}
-The emphasis is on the word ``sketch''. Give a very high-level description of the proofs, emphasizing the proof structure and the proof techniques used. If the proofs have no structure (in which case it may be assumed that you are not the author of the paper), then you must impose one on them. Gloss over the technical details. It is a good idea to point them out but not to explore them.
+\subsection{Correctness}
+\begin{frame}{Bracha Toueg}
+\framesubtitle{Correctness}
+\begin{itemize}
+\item If scheduling of messages is fair, then the Bracha-Toueg k-crash consensus algorithm, for any \(k < N/2\) , is a Las Vegas
+algorithm that terminates with probability one.
+\item Proved in \cite{Fokking2013}\alert{Fokking2013}.
+\end{itemize}
 \end{frame}
 
+\subsection{Complexity}
+\begin{frame}{Bracha Toueg}
+\framesubtitle{Complexity}
+\begin{itemize}
+    \item Each round of the algorithm involves every non-faulty process broadcasting its current state (value and weight) to all other processes.
+    \item The number of messages transmitted in each round is \(O(n^2)\).
+    \item If up to k processes may fail, the algorithm still requires messages from at least N-k processes to proceed, maintaining the \(O(n^2)\) complexity per round
+    \item Computational complexity includes evaluating received messages to update weights and potentially decide on a value if conditions are met, which is \(O(n)\) per process per round.
+\end{itemize}
+\end{frame}
 
-\section{Experimental results/Proofs}
+\section{Chandra Toueg}
+\begin{frame}{Chandra Toueg}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{chandra-toueg.png}
+    % \caption{Chandra Toueg Algorithm Sudo Code}
+    \label{fig:chandra_toueg_sudo}
+\end{figure}
+% \framesubtitle{}
+% Explain \textbf{YOUR} contributions. Go top-down. Give the brief introduction to the contributions at the beginning of the presentation. A slide should have no more than five to six lines of text or bullets. Prefer figures instead of text: A picture is worth a thousand words.
+% \begin{itemize}
+% \item Communicate the Key Ideas
+% \item Don’t get Bogged Down in Details
+% \item Use a Top-down Approach
+% \end{itemize}
 
-\subsection{Main Result 1}
-\begin{frame}
-\frametitle{Main Result 1}
+% The audience will remember at most one single message \textbf{Which message you want to audience to remember? Can you express this message in less than a minute in an elevator?}
+
+\end{frame}
+
+\begin{frame}{Chandra Toueg}
+\framesubtitle{An Example}
+Given a complete network of three processes \(p_0, p_1, p_2\), and \(k = 1\)
+
+\begin{itemize}
+\item Initially, \(p_0\) and \(p_2\) randomly choose the value 1 and \(p_1\) the value 0; last-update=-1 at all three processes.
+\item In round 0, the coordinator \(p_0\) takes into account the messages from \(p_0\) and \(p_1\), selects the message from
+\(p_1\) to determine its new value, and broadcasts the value 0. When \(p_0\) and \(p_1\) receive this message, they set
+their value to 0 and last-update to 0, and send ack to \(p_0\); moreover, \(p_1\) moves to round 1.
+\item However, \(p_2\) moves
+to round 1 without waiting for a message from \(p_0\), because its failure detector falsely suspects that \(p_0\) has
+crashed; \(p_2\) sends nack to \(p_0\), and moves to round 1. The coordinator \(p_0\) receives the ack’s of \(p_0\) and \(p_1\),
+decides for 0, and crashes before it can broadcast a decide message.
+\end{itemize}
+\end{frame}
+
+\subsection{An Example}
+\begin{frame}{Chandra Toueg}
+\framesubtitle{An Example (contd.)}
+\begin{itemize}
+\item In round 1, the coordinator \(p_1\) can take into account only the messages from \(p_1\) and \(p_2\). It must select the
+message from \(p_1\) to determine its new value, because it has the highest last-update. So \(p_1\) broadcasts the value
+0. 
+\item When \(p_1\) receives this message, it sets its value to 0 and last-update to 1, and sends ack to itself. The process
+\(p_2\) moves to round 2 without waiting for a message from \(p_1\), because its failure detector falsely suspects that
+\(p_1\) has crashed; \(p_2\) sends nack to \(p_0\), and moves to round 2. After \(p_1\) has received the ack and nack from
+\(p_1\) and \(p_2\), respectively, it also moves to round 2.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chandra Toueg}
+\framesubtitle{An Example (contd.)}
+\begin{itemize}
+\item In round 2, the coordinator \(p_2\) can take into account only the messages from \(p_1\) and \(p_2\). It must select the
+message from \(p_1\) to determine its new value, because it has the highest last-update. So \(p_2\) broadcasts the value
+0. When \(p_1\) and \(p_2\) receive this message, they set their value to 0 and last-update to 2, and send ack to \(p_2\);
+moreover, \(p_1\) moves to round 3.
+\item The coordinator \(p_2\) receives the ack’s of \(p_1\) and \(p_2\), decides for 0, and
+broadcasts \(<decide, 0>\). When \(p_1\) receives this message, it also decides for 0.
+\end{itemize}
+\end{frame}
+
+\subsection{Correctness}
+\begin{frame}{Chandra Toueg}
+\framesubtitle{Correctness}
+\begin{itemize}
+\item A failure detector is called \alert{eventually weakly accurate} if from some point in time on, some correct process is never
+suspected by any process.
+\item In the presence of an eventually weakly accurate failure detector, the Chandra-Toueg algorithm is an (always correctly
+terminating) k-crash consensus algorithm for any \(k < N/2\).
+\item Proved in \cite{Fokking2013}\alert{Fokking2013}.
+\end{itemize}
+\end{frame}
+
+\subsection{Complexity}
+\begin{frame}{Chandra Toueg}
+\framesubtitle{Complexity}
+\begin{itemize}
+\item \alert{Time complexity of a round:}The number of rounds of the protocol is bounded by n, when used with a failure detector
+of the class S. There is no upper bound when it is used with a failure detector of the class \(<>S\).
+\item \alert{Message complexity of a round:}During each round, each process sends a message to eachprocess (including itself).
+Hence, the message complexity of a round is upper bounded by \(n^2\)
+\item \alert{Message type and size:}There are two types of message: \alert{est} and \alert{decide}. A decide message carries only a proposed
+value. An est message carries a proposed value (or the default value)plus a round number. The size of the round number
+is bounded by \(log_2(n)\) when the underlying failure detector belongs to S. It is not bounded in the other case
+\item Explained in \cite{Mostefaoui1999}\alert{Mostefaoui1999}.
+\end{itemize}
+\end{frame}
+
+\section{Experimentation Results for Chandra Toueg}
+
+\subsection{Methodology}
+\begin{frame}{Experimentation Results for Chandra Toueg}
+\framesubtitle{Methodology}
+\begin{itemize}
+\item The topology for the experiment is considered completely connected. It is assumed that the failure detector module will
+not detect any other process as crashed during execution of the consensus algorithm
+\item The detector module
+in process p populates \(D_p\) randomly before consensus algorithm starts execution.
+\item As \cite{Hossain}\alert{Hossain} depicted in his research
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Experimentation Results for Chandra Toueg}
+\framesubtitle{Methodology (contd.)}
+\begin{itemize}
+\item Three parameters are measured to analyzed the performance of the algorithm:
+\begin{enumerate}
+    \item The average number of round needed
+to receive all processs values for different number of Processes in the system. The algorithm is run for N = 4, 8, 12,
+··· 60.    
+    \item For each round, the percentage of processes that get values from all other processes. In this case,
+N = 8 and 60 is considered to show the comparison result for the parameter
+    \item Average number of waiting time for
+each process in phase1 for N =8 and 60. Waiting time is the number of times a presses is selected to execute but has to
+wait to receive all processes’ values who are not in its \(D_p\).
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\subsection{Results}
+\begin{frame}{Experimentation Results for Chandra Toueg}
+\framesubtitle{Results}
+\begin{enumerate}
+\item The average number of round needed
+to receive all processs values for different number of Processes in the system. The algorithm is run for N = 4, 8, 12,
+··· 60.
+\end{enumerate}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{fig1.png}
+    % \caption{Chandra Toueg Algorithm Sudo Code}
+    \label{fig:chandra_toueg_sudo}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Experimentation Results for Chandra Toueg}
+\framesubtitle{Results (contd.)}
+    \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item For each round, the percentage of processes that get values from all other processes. In this case,
+    N = 8 and 60 is considered to show the comparison result for the parameter.
+\end{enumerate}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{fig4.png}
+    % \caption{Chandra Toueg Algorithm Sudo Code}
+    \label{fig:chandra_toueg_sudo}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Experimentation Results for Chandra Toueg}
+\framesubtitle{Results (contd.)}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Average number of waiting time for
+each process in phase1 for N =8 and 60. Waiting time is the number of times a presses is selected to execute but has to
+wait to receive all processes’ values who are not in its \(D_p\).
+\end{enumerate}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{fig6.png}
+    % \caption{Chandra Toueg Algorithm Sudo Code}
+    \label{fig:chandra_toueg_sudo}
+\end{figure}
+\end{frame}
+
+\section{Conclusion} % When To Use Which ?
+\begin{frame}{Conlusion}
 \framesubtitle{}
-Choose \textbf{just the key results}. They should be important, non-trivial, should give the flavour of the rest of the technical details and should be presentable in a relatively short period of time. Use figures instead of tables instead of text.
-
-Better to present 10\% the entire audience gets than 90\% nobody gets
-\end{frame}
-
-
-\subsection{Main Result 2}
-\begin{frame}
-\frametitle{Main Result 2}
-\framesubtitle{Try a subtitle}
 \begin{itemize}
-\item Make sure your notation is clear and consistent throughout the talk. Prepare a slide that explains the notation in detail, in case that is needed or if somebody asks.
-\item Always label all of your axes on graphs; use short but helpful captions on figures and tables. It is also very useful to have an arrow on the side which clearly shows which direction is considered better (e.g., "up is better").
-\item If you have experimental results, make sure you clearly present the experimental paradigm you used, and the details of your methods, including the number of trials, the specific analysis tools you applied, significance testing, etc.
-\item The talk should contain at least a brief discussion of the limitations and weaknesses of the presented approach or results, in addition to their strengths. This, however, should be done in an objective manner -- don't enthusiastically put down your own work.
+\item \alert{Chandra-Toueg:} Best in stable environments with reliable failure detectors. It excels in scalability but depends heavily on detector accuracy, limiting its use in dynamic networks.
+\item \alert{Bracha-Toueg:} Effective without failure detectors, robust in environments with predictable crash limits. Ideal for critical systems needing resilience under communication delays.
+\item \alert{Key Takeaway:} Select algorithms based on network stability and system needs. Future research could develop adaptive, hybrid models to enhance fault tolerance and reduce operational complexity.
 \end{itemize}
 \end{frame}
 
-
-\subsection{Main Result 3}
-\begin{frame}
-\frametitle{Main Result 3}
-\framesubtitle{}
-\begin{itemize}
-\item If time allows, the results should be compared to the most related work in the field. You should at least prepare one slide with a summary of the related work, even if you do not get a chance to discuss it. This will be helpful if someone asks about it, and will demonstrate your mastery of the material.
-\item Spell check again.
-\item Give for each of the x-axis, y-axis, and z-axis
-\item Label, unit, scale (if log scale)
-\item Give the legend
-\item Explain all symbols
-\item Take an example to illustrate a specific point in the figure
-\end{itemize}
-\end{frame}
-
-
-
-\section{Conclusions}
-\begin{frame}
-\frametitle{Conclusions}
-\framesubtitle{Hindsight is Clearer than Foresight}
-Advices come from \cite{spillman2000present}.
-\begin{itemize}
-\item You can now make observations that would have been confusing if they were introduced earlier. Use this opportunity to refer to statements that you have made in the previous three sections and weave them into a coherent synopsis. You will regain the attention of the non- experts, who probably didn’t follow all of the Technicalities section. Leave them feeling that they have learned something nonetheless.
-\item Give Open Problems It is traditional to end with a list of open problems that arise from your paper. Mention weaknesses of your paper, possible generalizations, and indications of whether they will be fruitful or not. This way you may defuse antagonistic questions during question time.
-\item Indicate that your Talk is Over
-An acceptable way to do this is to say “Thank-you. Are there any questions?”\cite{einstein}
-\end{itemize}
-
-\end{frame}
 
 \section*{References}
 \begin{frame}{References}
@@ -280,26 +357,6 @@ An acceptable way to do this is to say “Thank-you. Are there any questions?”
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 \end{frame}
-
-\begin{frame}{How to prepare the talk?}
-Please read \url{http://larc.unt.edu/ian/pubs/speaker.pdf}
-\begin{itemize}
-\item The Introduction:  Define the Problem,    Motivate the Audience,    Introduce Terminology,    Discuss Earlier Work,    Emphasize the Contributions of your Paper,    Provide a Road-map.
-\item The Body:    Abstract the Major Results, Explain the Significance of the Results, Sketch a Proof of the Crucial Results
-\item Technicalities: Present a Key Lemma, Present it Carefully
-\item The Conclusion: Hindsight is Clearer than Foresight, Give Open Problems, Indicate that your Talk is Over
-\end{itemize}
-
-\note{
-\begin{itemize}
-\item The Introduction:  Define the Problem,    Motivate the Audience,    Introduce Terminology,    Discuss Earlier Work,    Emphasize the Contributions of your Paper,    Provide a Road-map.
-\item The Body:    Abstract the Major Results, Explain the Significance of the Results, Sketch a Proof of the Crucial Results
-\item Technicalities: Present a Key Lemma, Present it Carefully
-\item The Conclusion: Hindsight is Clearer than Foresight, Give Open Problems, Indicate that your Talk is Over 
-\end{itemize}
-}
-\end{frame}
-
 
 
 \thankslide
